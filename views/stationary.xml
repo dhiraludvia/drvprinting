@@ -12,6 +12,7 @@
           <field name="jeniskirim_id"/>
           <field name="pegawaistationary_id"/>
           <field name="harga_atk"/>
+          <field name="stok"/>
           <field name="satuan"/>
           <field name="active"/>
         </tree>
@@ -37,6 +38,7 @@
                 <group colspan='2'>
                   <separator string='Harga Stationary'/>
                     <field name="harga_atk"/>
+                    <field name="stok"/>
                     <field name="satuan"/>
                     <field name="jeniskirim_id"/>
                 </group>

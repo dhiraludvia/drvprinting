@@ -11,6 +11,9 @@
                     <!-- Add your fields here -->
                     <field name="order_id"/>
                     <field name="tanggal_pesan"/>
+                    <field name="is_atk"/>
+                    <field name="is_banner"/>
+                    <field name="is_stiker"/>
                     <field name="jumlah_pesanan"/>
                     <field name="total_tagihan"/>
                 </tree>
@@ -24,35 +27,49 @@
             <field name="name">printing.order.view.form</field>
             <field name="model">printing.order</field>
             <field name="arch" type="xml">
-                <form string="Data Order dRV Printing">
+                <form string="Data Order DRV Printing">
                     <sheet>
                         <group>
                             <group colspan='4'>
                                 <group colspan='2'>
                                     <field name="order_id"/>
                                     <field name="tanggal_pesan"/>
+                                    <field name="is_atk"/>
+                                    <field name="is_banner"/>
+                                    <field name="is_stiker"/>
                                     <field name="jumlah_pesanan"/>
                                     <field name="total_tagihan"/>
                                 </group>
                                 <notebook colspan='4'>
-                                    <page name="Detail Order Stationary" string="Detail Order Stationary">
+                                    <page name="Detail Order Stationary" string="Detail Order Stationary" attrs="{'invisible':[('is_atk','!=',True)]}">
                                         <field name="detailorder_ids">
                                             <tree editable='bottom'>
                                                 <field name="banyaknya_atk"/>
                                                 <field name="name_atk"/>
                                                 <field name="harga_atk" /> 
                                                 <field name="jumlah_harga" sum='Total Stationary'/> 
-                                                
                                             </tree>
                                         </field>
                                     </page>
-                                    <page name="Detail Order Printing" string="Detail Order Printing">
+                                    <page name="Detail Order Printing Banner" string="Detail Order Printing Banner" attrs="{'invisible':[('is_banner','!=',True)]}">
                                         <field name="detailorder2_ids">
                                             <tree editable='bottom'>
                                                 <field name="banyaknya_print"/>
-                                                <field name="name_print"/>
-                                                <field name="harga_print" /> 
-                                                <field name="jumlah_harga" sum='Total Printing'/> 
+                                                <field name="name_print" string='Nama Banner'/>
+                                                <field name="panjang"/>
+                                                <field name="lebar"/>
+                                                <field name="harga_print" string='Harga Cetak per Meter'/> 
+                                                <field name="jumlah_harga_banner" sum='Total Printing Banner'/> 
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page name="Detail Order Printing Stiker" string="Detail Order Printing Stiker" attrs="{'invisible':[('is_stiker','!=',True)]}">
+                                        <field name="detailorder3_ids">
+                                            <tree editable='bottom'>
+                                                <field name="banyaknya_stiker"/>
+                                                <field name="name_stiker"/>
+                                                <field name="harga_stiker"/> 
+                                                <field name="jumlah_harga_stiker" sum='Total Printing Stiker'/> 
                                             </tree>
                                         </field>
                                     </page>

@@ -15,6 +15,8 @@ class stationary(models.Model):
         string='Harga Barang',
         required=True)
 
+    stok = fields.Integer(string='Jumlah Stok')
+
     satuan = fields.Selection(
         string='Satuan',
         selection=[("pcs","Pcs"),("pack","Pack"), ("box","Box")],
@@ -34,7 +36,7 @@ class stationary(models.Model):
     pegawaistationary_id = fields.Many2one(
         comodel_name='hr.employee', 
         string='PIC Stationary',
-        )
+        domain="[('is_pegawainya','ilike',True)]")
     
     @api.onchange('satuan')
     def _onchange_satuan(self):
@@ -42,21 +44,21 @@ class stationary(models.Model):
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Harus COD A / JNE'
+                    'message' : 'Teknik Pengiriman Kecuali COD'
                 }
             }
         elif self.satuan == 'pack':
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Harus JNT'
+                    'message' : 'Teknik Pengiriman Kecuali JNT'
                 }
             }
         elif self.satuan == 'box':
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Harus COD B '
+                    'message' : 'Teknik Pengiriman Harus Pick Up / JNE'
                 }
             }
         

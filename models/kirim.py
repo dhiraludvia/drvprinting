@@ -8,7 +8,7 @@ class kirim(models.Model):
     _description = 'Daftar Teknik Kirim'
 
     name = fields.Selection(
-        [("COD A","COD A"),("COD B","COD B"),("JNE","JNE"),("JNT","JNT")], 
+        [("Pick Up","Pick Up"),("COD","COD"),("JNE","JNE"),("JNT","JNT")], 
         string='Teknik Pengiriman',
         required=True)
     

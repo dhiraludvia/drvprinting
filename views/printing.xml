@@ -10,10 +10,11 @@
                 <tree string="Daftar Layanan Printing">
                     <field name="name"/>
                     <field name="bahan"/>
+                    <field name="stok_bahanprinting"/>
                     <field name="ukuran"/>
                     <field name="kirim_id"/>
                     <field name="pegawaiprinting_id"/>
-                    <field name="harga_cetak"/>
+                    <field name="harga_print"/>
                     <field name="active"/>
                 </tree>
             </field>
@@ -35,11 +36,12 @@
                                     <separator string='Data Printing'/>
                                         <field name="name"/>
                                         <field name="bahan"/>
+                                        <field name="stok_bahanprinting"/>
                                 </group>
                                 <group colspan='2'>
                                     <separator string='Harga Printing'/>
                                         <field name="ukuran"/>
-                                        <field name="harga_cetak"/>
+                                        <field name="harga_print"/>
                                         <field name="kirim_id"/>
                                 </group>
                                 <notebook>

@@ -13,14 +13,16 @@
 
 
     <!-- pegawai inherit form view -->
-    <!-- <record id="karyawan_inherit_view_form" model="ir.ui.view">
+    <record id="karyawan_inherit_view_form" model="ir.ui.view">
         <field name="name">Daftar Karyawan</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="is_pegawainya"/>
+            </xpath>
         </field>
-    </record> -->
+    </record>
 
     <!-- pegawai_drvprinting action window -->
     <record id="karyawan_drvprinting_action" model="ir.actions.act_window">

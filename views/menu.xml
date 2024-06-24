@@ -22,7 +22,7 @@
             sequence="30"/>
 
         <menuitem id="printing_laporan_menu_categ" 
-            name="Laporan" 
+            name="Report" 
             parent="printing_menu_root" 
             sequence="35"/>
 

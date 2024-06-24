@@ -12,11 +12,12 @@ class cetak(models.Model):
         string='Bahan yang Digunakan',
         selection=[("kertas","Kertas"),("stiker","Stiker"),("banner","Banner"), ("kain","Kain")],
         required=True)
-
+    
     ukuran = fields.Char(
         string='Ukuran Printing',
         required=True)
     
+    stok_bahanprinting = fields.Integer(string='Stok Bahan Printing')
 
     
     
@@ -29,7 +30,7 @@ class printing(models.Model):
         string='Nama Printing',
         required=True)
     
-    harga_cetak = fields.Integer(
+    harga_print = fields.Integer(
         string='Harga Printing',
         required=True)
 
@@ -63,21 +64,21 @@ class printing(models.Model):
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Harus COD B / JNT'
+                    'message' : 'Teknik Pengiriman Kecuali COD'
                 }
             }
         elif self.bahan == 'stiker':
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Harus COD A'
+                    'message' : 'Teknik Pengiriman Harus Pick Up'
                 }
             }
         elif self.bahan == 'banner':
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Harus JNE / JNT'
+                    'message' : 'Teknik Pengiriman Kecuali JNT'
                 }
             }
         
@@ -85,6 +86,6 @@ class printing(models.Model):
             return {
                 'warning' :{
                     'title' : 'DELIVERY',
-                    'message' : 'Teknik Pengiriman Kecuali COD'
+                    'message' : 'Teknik Pengiriman Kecuali JNE'
                 }
             }

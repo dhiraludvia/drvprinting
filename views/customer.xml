@@ -13,13 +13,16 @@
     </record> -->
    
     <!-- res.partner inherit form view -->
-    <!-- <record id="inherit_res_partner_view_id" model="ir.ui.view">
+    <record id="inherit_res_partner_view_id" model="ir.ui.view">
       <field name="name">Daftar Customer</field>
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
+        <xpath expr="//field[@name='vat']" position="after">
+          <field name="is_customernya"/>
+        </xpath>
       </field>
-    </record> -->
+    </record>
 
     <!-- model.name inherit search view -->
     <record id="res_partner_inherit_search" model="ir.ui.view">
