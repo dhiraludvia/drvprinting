@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- model.name tree view -->
+        <record id="printing_jenisprint_view_tree" model="ir.ui.view">
+            <field name="name">printing.jenisprint.view.tree</field>
+            <field name="model">printing.jenisprint</field>
+            <field name="arch" type="xml">
+                <tree string="Daftar Layanan Printing">
+                    <field name="name"/>
+                    <field name="bahan"/>
+                    <field name="ukuran"/>
+                    <field name="kirim_id"/>
+                    <field name="pegawaiprinting_id"/>
+                    <field name="harga_cetak"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <!-- model.name form view -->
+        <record id="printing_jenisprint_view_form" model="ir.ui.view">
+            <field name="name">printing.jenisprint.view.form</field>
+            <field name="model">printing.jenisprint</field>
+            <field name="arch" type="xml">
+                <form string="Daftar Printing">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <group colspan='4'>
+                                <group colspan='2'>
+                                    <separator string='Data Printing'/>
+                                        <field name="name"/>
+                                        <field name="bahan"/>
+                                </group>
+                                <group colspan='2'>
+                                    <separator string='Harga Printing'/>
+                                        <field name="ukuran"/>
+                                        <field name="harga_cetak"/>
+                                        <field name="kirim_id"/>
+                                </group>
+                                <notebook>
+                                    <page string="Detail Printing">
+                                        <field name="keterangan"/>
+                                    </page>
+                                    <page string="PIC Delivery">
+                                        <field name="pegawaiprinting_id"/>
+                                    </page>
+                                </notebook>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>    
+    
+
+
+        <!-- model.name action window -->
+        <record id="printing_jenisprint_action" model="ir.actions.act_window">
+            <field name="name">Data Printing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printing.jenisprint</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                    Isi Dengan Data Printing
+                </p>
+            </field>
+        </record>   
+        
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="printing_jenisprint_menu_act" 
+            name="Printing" 
+            parent="printing_datamaster_menu_categ" 
+            action="printing_jenisprint_action" 
+            sequence="10"/>
+
+
+    </data>
+</odoo>

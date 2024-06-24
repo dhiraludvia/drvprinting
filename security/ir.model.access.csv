@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_printing_jeniskirim,access.printing.jeniskirim,model_printing_jeniskirim,,1,1,1,1
+access_printing_jenisbarang,access.printing.jenisbarang,model_printing_jenisbarang,,1,1,1,1
+access_printing_jenisprint,access.printing.jenisprint,model_printing_jenisprint,,1,1,1,1
+access_printing_jeniscetak,access.printing.jeniscetak,model_printing_jeniscetak,,1,1,1,1
+access_printing_order,access.printing.order,model_printing_order,,1,1,1,1
+access_printing_detailorderatk,access.printing.detailorderatk,model_printing_detailorderatk,,1,1,1,1
+access_printing_detailorderprint,access.printing.detailorderprint,model_printing_detailorderprint,,1,1,1,1
+access_report_drvprinting_reportorderxlsx,access.report.drvprinting.reportorderxlsx,model_report_drvprinting_reportorderxlsx,,1,1,1,1
+access_printing_reportorderwz,access.printing.reportorderwz,model_printing_reportorderwz,,1,1,1,1

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- model.name tree view -->
+    <record id="printing_jenisbarang_tree" model="ir.ui.view">
+      <field name="name">printing.jenisbarang.tree</field>
+      <field name="model">printing.jenisbarang</field>
+      <field name="arch" type="xml">
+        <tree string="Daftar Product Stationary">
+          <field name="name"/>
+          <field name="jeniskirim_id"/>
+          <field name="pegawaistationary_id"/>
+          <field name="harga_atk"/>
+          <field name="satuan"/>
+          <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <!-- model.name form view -->
+    <record id="printing_jenisbarang_view_form" model="ir.ui.view">
+      <field name="name">printing.jenisbarang.view.form</field>
+      <field name="model">printing.jenisbarang</field>
+      <field name="arch" type="xml">
+        <form string="Daftar Stationary">
+          <sheet>
+            <group>
+              <!-- Add your fields here -->
+              <group colspan='4'>
+                <group colspan='2'>
+                  <separator string='Data Stationary'/>
+                    <field name="name"/>
+                </group>
+                <group colspan='2'>
+                  <separator string='Harga Stationary'/>
+                    <field name="harga_atk"/>
+                    <field name="satuan"/>
+                    <field name="jeniskirim_id"/>
+                </group>
+                <notebook>
+                  <page string="Detail Stationary">
+                    <field name="ket_atk" nolabel='1'/>
+                  </page>
+                  <page string="PIC Stationary">
+                    <field name="pegawaistationary_id"/>
+                  </page>
+                </notebook>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+    <record id="printing_jenisbarang_action" model="ir.actions.act_window">
+      <field name="name">Data Stationary</field>
+      <field name="res_model">printing.jenisbarang</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Isi Dengan Data Stationary
+        </p>
+      </field>
+    </record>
+
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="printing_jenisbarang_menu_act" 
+      name="Stationary" 
+      parent="printing_datamaster_menu_categ" 
+      action="printing_jenisbarang_action" 
+      sequence="15"/>
+    
+  
+  </data>
+</odoo>

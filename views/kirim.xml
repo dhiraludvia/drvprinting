@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- model.name tree view -->
+        <record id="printing_jeniskirim_view_tree" model="ir.ui.view">
+            <field name="name">printing.jeniskirim.view.tree</field>
+            <field name="model">printing.jeniskirim</field>
+            <field name="arch" type="xml">
+                <tree string="Daftar Layanan Printing">
+                    <field name="name"/>
+                    <field name="packaging"/>
+                    <field name="berat"/>
+                    <field name="wilayah"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <!-- model.name form view -->
+        <record id="printing_jeniskirim_view_form" model="ir.ui.view">
+            <field name="name">printing.jeniskirim.view.form</field>
+            <field name="model">printing.jeniskirim</field>
+            <field name="arch" type="xml">
+                <form string="Daftar Printing">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <group colspan='4'>
+                                <group colspan='2'>
+                                    <separator string='Data Delivery'/>
+                                        <field name="name"/>
+                                        <field name="packaging"/>
+                                        <field name="berat"/>
+                                        <field name="wilayah"/>
+                                </group>
+                                <notebook>
+                                    <page string="Detail Delivery">
+                                        <field name="ket_kirim" nolabel='1'/>
+                                    </page>
+                                    <page string="Data Product">
+                                        <field name="teknikcetak_ids" nolabel='1'/>
+                                        <field name="teknikkirim_ids" nolabel='1'/>
+                                    </page>
+                                    <page string="Penanggung Jawab">
+                                        <field name="pegawai_id" nolabel='1'/>
+                                    </page>
+                                </notebook>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>    
+    
+
+
+        <!-- model.name action window -->
+        <record id="printing_jeniskirim_action" model="ir.actions.act_window">
+            <field name="name">Data Delivery</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printing.jeniskirim</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                    Isi Dengan Data Delivery
+                </p>
+            </field>
+        </record>   
+    
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="printing_jeniskirim_menu_act" 
+            name="Delivery" 
+            parent="printing_dataoperasional_menu_categ" 
+            action="printing_jeniskirim_action" 
+            sequence="15"/>
+
+
+    </data>
+</odoo>

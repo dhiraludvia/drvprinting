@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- printing.reportorderwz form view -->
+    <record id="printing_reportorderwz_view_form" model="ir.ui.view">
+        <field name="name">printing.reportorderwz.view.form</field>
+        <field name="model">printing.reportorderwz</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="dari_tgl"/>
+                        <field name="ke_tgl"/>                        
+                    </group>
+                    <footer>
+                        <button name="action_order_report"
+                            string="Print Report"
+                            type="object"
+                            class="btn btn-primary"
+                        />
+                        <button string="Cancel"
+                            special="cancel"
+                            class="btn btn-warning"
+                        />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- printing.reportorderwz action window -->
+    <record id="printing_reportorderwz_action" model="ir.actions.act_window">
+        <field name="name">Report Order Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">printing.reportorderwz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="printing_reportorderwz_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="printing_reportorderwz_menu_act" 
+        name="Laporan Purchase Order" 
+        parent="printing_laporan_menu_categ" 
+        action="printing_reportorderwz_action" 
+        sequence="10"/>
+
+</odoo>
+

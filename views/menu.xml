@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="printing_menu_root" 
+            name="DRV Printing" 
+            sequence="10"/>
+    
+        <menuitem id="printing_datamaster_menu_categ" 
+            name="Product"
+            parent="printing_menu_root"
+            sequence="10"/>
+
+        <menuitem id="printing_dataoperasional_menu_categ"
+            name="Operasional"
+            parent="printing_menu_root"
+            sequence="20"/>
+
+        <menuitem id="printing_datacontact_menu_categ"
+            name="Contact"
+            parent="printing_menu_root"
+            sequence="30"/>
+
+        <menuitem id="printing_laporan_menu_categ" 
+            name="Laporan" 
+            parent="printing_menu_root" 
+            sequence="35"/>
+
+    </data>
+</odoo>

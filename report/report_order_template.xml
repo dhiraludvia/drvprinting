@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_printing_order_id">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="container fluid">
+                        <div class="row">
+                            <div class="col-4">
+                                Nama :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="o.order_id"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Tanggal Pesanan :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="o.tanggal_pesan"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Jumlah Pesanan :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="o.jumlah_pesanan"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Total Tagihan :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="o.total_tagihan"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <th>Nama Stationary</th>
+                                <th>Harga Stationary</th>
+                                <th>Banyaknya Stationary</th>
+                                <th>Jumlah Harga Stationary</th>
+                            </tr>
+                            <t t-set="nomor" t-value="1"/>
+                            <tr t-foreach="o.detailorder_ids" t-as="line">
+                                <td><span t-esc="line.name_atk.name"/></td>
+                                <td><span t-esc="line.harga_atk"/></td>
+                                <td><span t-esc="line.banyaknya_atk"/></td>
+                                <td><span t-esc="line.jumlah_harga" sum='Jumlah Harga Stationary'/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br/><br/>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <th>Nama Printing</th>
+                                <th>Harga Printing</th>
+                                <th>Banyaknya Printing</th>
+                                <th>Jumlah Harga Printing</th>
+                            </tr>
+                            <t t-set="nomor" t-value="1"/>
+                            <tr t-foreach="o.detailorder2_ids" t-as="line">
+                                <td><span t-esc="line.name_print.name"/></td>
+                                <td><span t-esc="line.harga_print"/></td>
+                                <td><span t-esc="line.banyaknya_print"/></td>
+                                <td><span t-esc="line.jumlah_harga" sum='Jumlah Harga Printing'/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

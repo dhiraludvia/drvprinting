@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+   
+        <!-- model.name tree view -->
+        <record id="printing_order_view_tree" model="ir.ui.view">
+            <field name="name">printing.order.view.tree</field>
+            <field name="model">printing.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="order_id"/>
+                    <field name="tanggal_pesan"/>
+                    <field name="jumlah_pesanan"/>
+                    <field name="total_tagihan"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <!-- model.name form view -->
+        <record id="printing_order_view_form" model="ir.ui.view">
+            <field name="name">printing.order.view.form</field>
+            <field name="model">printing.order</field>
+            <field name="arch" type="xml">
+                <form string="Data Order dRV Printing">
+                    <sheet>
+                        <group>
+                            <group colspan='4'>
+                                <group colspan='2'>
+                                    <field name="order_id"/>
+                                    <field name="tanggal_pesan"/>
+                                    <field name="jumlah_pesanan"/>
+                                    <field name="total_tagihan"/>
+                                </group>
+                                <notebook colspan='4'>
+                                    <page name="Detail Order Stationary" string="Detail Order Stationary">
+                                        <field name="detailorder_ids">
+                                            <tree editable='bottom'>
+                                                <field name="banyaknya_atk"/>
+                                                <field name="name_atk"/>
+                                                <field name="harga_atk" /> 
+                                                <field name="jumlah_harga" sum='Total Stationary'/> 
+                                                
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page name="Detail Order Printing" string="Detail Order Printing">
+                                        <field name="detailorder2_ids">
+                                            <tree editable='bottom'>
+                                                <field name="banyaknya_print"/>
+                                                <field name="name_print"/>
+                                                <field name="harga_print" /> 
+                                                <field name="jumlah_harga" sum='Total Printing'/> 
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- model.name action window -->
+        <record id="printing_order_action" model="ir.actions.act_window">
+            <field name="name">Data Order</field>
+            <field name="res_model">printing.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_smilling_face">
+                    Create New Order
+                </p>
+            </field>
+        </record>
+
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="printing_order_menu_act" 
+        name="Order" 
+        parent="printing_dataoperasional_menu_categ" 
+        action="printing_order_action" 
+        sequence="10"/>
+
+    </data>
+</odoo>

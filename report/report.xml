@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_order_wizard" model="ir.actions.report">
+        <field name="name">Wizard Laporan Purchase Order</field>
+        <field name="model">printing.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">printing.report_order_template_wizard</field>
+        <field name="report_file">printing.report_order_template_wizard</field>
+        <field name="binding_model_id" ref='model_printing_order'/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_printing_order" model="ir.actions.report">
+        <field name="name">Print Laporan Purchase Order</field>
+        <field name="model">printing.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">drvprinting.report_printing_order_id</field>
+        <field name="report_file">drvprinting.report_printing_order_id</field>
+        <field name="binding_model_id" ref="model_printing_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_order_xlsx" model="ir.actions.report">
+        <field name="name">Print Laporan Purchase Order xlsx</field>
+        <field name="model">printing.order</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">drvprinting.reportorderxlsx</field>
+        <field name="report_file">drvprinting.reportorderxlsx</field>
+        <field name="binding_model_id" ref='model_printing_order'/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

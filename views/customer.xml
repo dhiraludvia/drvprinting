@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  
+    
+    <!-- customer inherit tree view -->
+    <!-- <record id="customer_inherit_view_tree" model="ir.ui.view">
+      <field name="name">Daftar Customer</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_view"/>
+      <field name="arch" type="xml">
+        
+      </field>
+    </record> -->
+   
+    <!-- res.partner inherit form view -->
+    <!-- <record id="inherit_res_partner_view_id" model="ir.ui.view">
+      <field name="name">Daftar Customer</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+      </field>
+    </record> -->
+
+    <!-- model.name inherit search view -->
+    <record id="res_partner_inherit_search" model="ir.ui.view">
+      <field name="name">res.partner.inherit.search</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+      <field name="arch" type="xml">     
+      <field name="parent_id" position="after">
+        <filter string="Customer" name="is_customernya" domain="[('is_customernya', 'ilike', True)]"/>
+       </field>   
+      </field>      
+    </record>
+    
+
+    <!-- res.partner action window -->
+    <record id="customer_action_window" model="ir.actions.act_window">
+      <field name="name">Customer</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{
+        'search_default_is_customernya':1,
+        'default_is_customernya':True,
+        }
+        </field>
+    </record>
+
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+      id="printing_contact_menu_act" 
+      name="Customer" 
+      parent="printing_datacontact_menu_categ" 
+      action="customer_action_window" 
+      sequence="25"/>
+
+  
+</odoo>

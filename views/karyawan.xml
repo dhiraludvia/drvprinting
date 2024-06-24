@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- pegawai inherit tree view -->
+    <!-- <record id="karyawan_view_tree_inherit" model="ir.ui.view">
+        <field name="name">Daftar Karyawan</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            
+        </field>
+    </record> -->
+
+
+    <!-- pegawai inherit form view -->
+    <!-- <record id="karyawan_inherit_view_form" model="ir.ui.view">
+        <field name="name">Daftar Karyawan</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            
+        </field>
+    </record> -->
+
+    <!-- pegawai_drvprinting action window -->
+    <record id="karyawan_drvprinting_action" model="ir.actions.act_window">
+        <field name="name">Karyawan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{
+            'search_default_is_pegawainya':1,
+            'default_is_pegawainya':True,
+            }
+            </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="printing_contact_pegawai_menu_act" 
+        name="Karyawan" 
+        parent="printing_datacontact_menu_categ" 
+        action="karyawan_drvprinting_action" 
+        sequence="20"/>
+
+</odoo>
