@@ -12,6 +12,8 @@ class kirim(models.Model):
         string='Teknik Pengiriman',
         required=True)
     
+    kirim_id = fields.Char(string='Nama Pengiriman')
+    
     packaging = fields.Selection(
         [("plastik","Plastik"),("bubble wrap","Bubble wrap"),("kardus","Kardus")], 
         string='Teknik Pengemasan',
@@ -22,6 +24,8 @@ class kirim(models.Model):
         string='Berat Pengemasan Max')
     
     wilayah = fields.Char(string='Jangkauan Wilayah Pengiriman')
+    
+    biaya = fields.Integer(string='Biaya Pengiriman')
     
     ket_kirim = fields.Char(
         string='Detail Delivery',

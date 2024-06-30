@@ -7,6 +7,8 @@ class stationary(models.Model):
     _name = 'printing.jenisbarang'
     _description = 'Daftar Barang Stationary'
 
+    atk_id = fields.Many2one('res.users', string='PIC Stationary', readonly=True, default=lambda self: self.env.user)
+    
     name = fields.Char(
         string='Nama Stationary',
         required=True)

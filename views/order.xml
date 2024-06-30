@@ -9,7 +9,10 @@
             <field name="arch" type="xml">
                 <tree>
                     <!-- Add your fields here -->
+                    <field name="user_id" groups="drvprinting.group_drvprinting_managerpenjualan"/>
+                    <field name="member"/>
                     <field name="order_id"/>
+                    <field name="name"/>
                     <field name="tanggal_pesan"/>
                     <field name="is_atk"/>
                     <field name="is_banner"/>
@@ -32,7 +35,10 @@
                         <group>
                             <group colspan='4'>
                                 <group colspan='2'>
-                                    <field name="order_id"/>
+                                    <field name="user_id" groups="drvprinting.group_drvprinting_managerpenjualan"/>
+                                    <field name="member"/>
+                                    <field name="order_id" attrs="{'invisible':[('member','!=',True)]}"/>
+                                    <field name="name" attrs="{'invisible':[('member','=',True)]}"/>
                                     <field name="tanggal_pesan"/>
                                     <field name="is_atk"/>
                                     <field name="is_banner"/>
@@ -81,12 +87,49 @@
             </field>
         </record>
 
+        <!-- printing_order pivot view -->
+        <record id="printing_order_view_pivot" model="ir.ui.view">
+            <field name="name">printing.order.view.pivot</field>
+            <field name="model">printing.order</field>
+            <field name="arch" type="xml">
+                <pivot string="Order">
+                    <field name="order_id" type="row"/>
+                    <field name="tanggal_pesan" type="col" interval="month"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- printing.order calendar view -->
+        <record id="printing_order_view_calendar" model="ir.ui.view">
+            <field name="name">printing.order.view.calendar</field>
+            <field name="model">printing.order</field>
+            <field name="arch" type="xml">
+                <calendar string="Order" date_start="tanggal_pesan" mode="month" color="user_id" quick_add="True">
+                    <field name="user_id"/>
+                    <field name="order_id"/>
+                    <field name="total_tagihan"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- printing.order graph view -->
+        <record id="printing_order_view_graph" model="ir.ui.view">
+            <field name="name">printing.order.view.graph</field>
+            <field name="model">printing.order</field>
+            <field name="arch" type="xml">
+                <graph string="Order" type="pie">
+                    <field name="order_id"/>
+                    <field name="total_tagihan_pivot" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
 
         <!-- model.name action window -->
         <record id="printing_order_action" model="ir.actions.act_window">
             <field name="name">Data Order</field>
             <field name="res_model">printing.order</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">calendar,tree,form,pivot,graph</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_smilling_face">
                     Create New Order

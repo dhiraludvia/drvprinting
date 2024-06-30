@@ -3,14 +3,17 @@
   
     
     <!-- customer inherit tree view -->
-    <!-- <record id="customer_inherit_view_tree" model="ir.ui.view">
+    <record id="customer_inherit_view_tree" model="ir.ui.view">
       <field name="name">Daftar Customer</field>
       <field name="model">res.partner</field>
-      <field name="inherit_id" ref="base.view_partner_view"/>
+      <field name="inherit_id" ref="base.view_partner_tree"/>
       <field name="arch" type="xml">
-        
+        <xpath expr="//field[@name='vat']" position="after">
+          <field name="is_customernya"/>
+          <field name="is_member"/>
+        </xpath>
       </field>
-    </record> -->
+    </record>
    
     <!-- res.partner inherit form view -->
     <record id="inherit_res_partner_view_id" model="ir.ui.view">
@@ -20,6 +23,7 @@
       <field name="arch" type="xml">
         <xpath expr="//field[@name='vat']" position="after">
           <field name="is_customernya"/>
+          <field name="is_member"/>
         </xpath>
       </field>
     </record>
@@ -57,7 +61,8 @@
       name="Customer" 
       parent="printing_datacontact_menu_categ" 
       action="customer_action_window" 
-      sequence="25"/>
+      sequence="25"
+      groups="drvprinting.group_drvprinting_customer"/>
 
   
 </odoo>

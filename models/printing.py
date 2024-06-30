@@ -8,6 +8,8 @@ class cetak(models.Model):
     _name = 'printing.jeniscetak'
     _description = 'Daftar Teknik Cetak'
     
+    print_id = fields.Many2one('res.users', string='PIC Print', readonly=True, default=lambda self: self.env.user)
+
     bahan = fields.Selection(
         string='Bahan yang Digunakan',
         selection=[("kertas","Kertas"),("stiker","Stiker"),("banner","Banner"), ("kain","Kain")],

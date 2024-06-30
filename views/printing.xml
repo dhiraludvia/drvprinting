@@ -8,6 +8,7 @@
             <field name="model">printing.jenisprint</field>
             <field name="arch" type="xml">
                 <tree string="Daftar Layanan Printing">
+                    <field name="print_id" groups="drvprinting.group_drvprinting_managerproduk"/>
                     <field name="name"/>
                     <field name="bahan"/>
                     <field name="stok_bahanprinting"/>
@@ -33,6 +34,7 @@
                             <!-- Add your fields here -->
                             <group colspan='4'>
                                 <group colspan='2'>
+                                    <field name="print_id" groups="drvprinting.group_drvprinting_managerproduk"/>
                                     <separator string='Data Printing'/>
                                         <field name="name"/>
                                         <field name="bahan"/>
@@ -82,7 +84,9 @@
             name="Printing" 
             parent="printing_datamaster_menu_categ" 
             action="printing_jenisprint_action" 
-            sequence="10"/>
+            sequence="10"
+            groups="drvprinting.group_drvprinting_printing"
+            />
 
 
     </data>

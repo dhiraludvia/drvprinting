@@ -4,11 +4,21 @@ class Order(models.Model):
     _name = 'printing.order'
     _description = 'Daftar Order DRV Printing'
     _rec_name = "order_id"
-
-    order_id = fields.Many2one('res.partner', 
-                               string='Customer',
-                               domain="[('is_customernya','ilike',True)]")
     
+    user_id = fields.Many2one('res.users', string='Kasir', readonly=True, default=lambda self: self.env.user)
+    
+    member = fields.Boolean(string='Apakah member ?')
+    
+    order_id = fields.Many2one('res.partner', 
+                               string='Nama Member',
+                               domain="[('is_member','ilike',True)]")
+    
+    name = fields.Many2one('res.partner', 
+                               string='Nama Customer',
+                               domain="['&',('is_customernya','ilike',True),('is_member','ilike',False)]")
+    
+    # name = fields.Char(string='Nama Customer')
+
     tanggal_pesan = fields.Datetime(
         string='Tanggal Pesanan',
         default=fields.Datetime.now)
@@ -55,6 +65,12 @@ class Order(models.Model):
             total3 = sum(self.env['printing.detailorderstiker'].search([('orderstiker_id','=',record.id)]).mapped('jumlah_harga_stiker'))
             record.total_tagihan = total1 + total2 + total3
 
+    total_tagihan_pivot = fields.Integer(compute='_compute_total_tagihan_pivot', string='Total Tagihan')
+    
+    @api.depends('total_tagihan')
+    def _compute_total_tagihan_pivot(self):
+        for record in self:
+            record.total_tagihan_pivot = record.total_tagihan
 
 
 class DetailOrderStationary(models.Model):

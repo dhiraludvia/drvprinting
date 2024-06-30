@@ -8,10 +8,12 @@
             <field name="model">printing.jeniskirim</field>
             <field name="arch" type="xml">
                 <tree string="Daftar Layanan Printing">
+                    <field name="kirim_id"/>
                     <field name="name"/>
                     <field name="packaging"/>
                     <field name="berat"/>
                     <field name="wilayah"/>
+                    <field name="biaya"/>
                     <field name="active"/>
                 </tree>
             </field>
@@ -31,10 +33,12 @@
                             <group colspan='4'>
                                 <group colspan='2'>
                                     <separator string='Data Delivery'/>
+                                        <field name="kirim_id"/>
                                         <field name="name"/>
                                         <field name="packaging"/>
                                         <field name="berat"/>
                                         <field name="wilayah"/>
+                                        <field name="biaya"/>
                                 </group>
                                 <notebook>
                                     <page string="Detail Delivery">

@@ -24,7 +24,8 @@
         <menuitem id="printing_laporan_menu_categ" 
             name="Report" 
             parent="printing_menu_root" 
-            sequence="35"/>
+            sequence="35"
+            groups="drvprinting.group_drvprinting_managerpenjualan"/>
 
     </data>
 </odoo>

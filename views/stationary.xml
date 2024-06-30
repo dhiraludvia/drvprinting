@@ -8,6 +8,7 @@
       <field name="model">printing.jenisbarang</field>
       <field name="arch" type="xml">
         <tree string="Daftar Product Stationary">
+          <field name="atk_id" groups="drvprinting.group_drvprinting_managerproduk"/>
           <field name="name"/>
           <field name="jeniskirim_id"/>
           <field name="pegawaistationary_id"/>
@@ -33,6 +34,7 @@
               <group colspan='4'>
                 <group colspan='2'>
                   <separator string='Data Stationary'/>
+                    <field name="atk_id" groups="drvprinting.group_drvprinting_managerproduk"/>
                     <field name="name"/>
                 </group>
                 <group colspan='2'>
@@ -77,7 +79,8 @@
       name="Stationary" 
       parent="printing_datamaster_menu_categ" 
       action="printing_jenisbarang_action" 
-      sequence="15"/>
+      sequence="15"
+      groups="drvprinting.group_drvprinting_stationary"/>
     
   
   </data>

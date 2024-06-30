@@ -12,3 +12,6 @@ class customer(models.Model):
 
     is_customernya = fields.Boolean(string='Customer', 
                                     default=False) 
+
+    is_member = fields.Boolean(string='Member ?',
+                           default=False)

@@ -2,14 +2,16 @@
 <odoo>
 
     <!-- pegawai inherit tree view -->
-    <!-- <record id="karyawan_view_tree_inherit" model="ir.ui.view">
+    <record id="karyawan_view_tree_inherit" model="ir.ui.view">
         <field name="name">Daftar Karyawan</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_tree"/>
         <field name="arch" type="xml">
-            
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="is_pegawainya"/>
+            </xpath>
         </field>
-    </record> -->
+    </record>
 
 
     <!-- pegawai inherit form view -->
@@ -23,6 +25,18 @@
             </xpath>
         </field>
     </record>
+
+    <!-- model.name inherit search view -->
+    <!-- <record id="karyawan_inherit_search" model="ir.ui.view">
+        <field name="name">Daftar Karyawan</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">     
+            <xpath expr="//field[@name='company_id']" position="after">
+                <filter string="Karyawan" name="is_pegawainya" domain="[('is_pegawainya', 'ilike', True)]"/>
+            </xpath>
+        </field>      
+    </record> -->
 
     <!-- pegawai_drvprinting action window -->
     <record id="karyawan_drvprinting_action" model="ir.actions.act_window">
@@ -42,6 +56,7 @@
         name="Karyawan" 
         parent="printing_datacontact_menu_categ" 
         action="karyawan_drvprinting_action" 
-        sequence="20"/>
+        sequence="20"
+        groups="drvprinting.group_drvprinting_karyawan"/>
 
 </odoo>
