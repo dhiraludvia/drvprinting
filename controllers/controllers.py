@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 # from odoo import http
+# from odoo.http import request
+
+# class Drvprinting(http.Controller):
+#     @http.route('/', type='http', auth='public', website=True)
+#     def index(self, **kw):
+#         return request.render('drvprinting.homepage_view')
 
 
 # class Drvprinting(http.Controller):
