@@ -15,7 +15,7 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'website',
+    'category': 'Sales',
     'version': '0.1',
     'application': True,
 
@@ -27,15 +27,19 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'data/referensi_order.xml',
         'views/menu.xml',
         'views/customer.xml',
         'views/kirim.xml',
         'views/order.xml',
         'views/karyawan.xml',
+        'views/karyawan_kasir.xml',
+        'views/karyawan_stationary.xml',
+        'views/karyawan_printing.xml',
         'views/printing.xml',
         'views/stationary.xml',
         # 'views/templates.xml',
-        'wizard/reportorderwz.xml',
+        # 'wizard/reportorderwz.xml',
         'report/report.xml',
         'report/report_order_template.xml',
     ],
@@ -43,10 +47,10 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'drvprinting/static/src/js/my_component.js',
-        ],
-    },
+    # 'assets': {
+    #     'web.assets_frontend': [
+    #         'drvprinting/static/src/js/my_component.js',
+    #     ],
+    # },
 
 }

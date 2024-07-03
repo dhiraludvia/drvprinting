@@ -10,6 +10,7 @@
                 <tree>
                     <!-- Add your fields here -->
                     <field name="user_id" groups="drvprinting.group_drvprinting_managerpenjualan"/>
+                    <field name="ref"/>
                     <field name="member"/>
                     <field name="order_id"/>
                     <field name="name"/>
@@ -19,6 +20,11 @@
                     <field name="is_stiker"/>
                     <field name="jumlah_pesanan"/>
                     <field name="total_tagihan"/>
+                    <field name="state" widget="badge" 
+                        decoration-info="state == 'draft'"
+                        decoration-primary="state == 'confirm'"
+                        decoration-success="state == 'done'"
+                        decoration-danger="state == 'cancel'"/>
                 </tree>
             </field>
         </record>
@@ -31,23 +37,31 @@
             <field name="model">printing.order</field>
             <field name="arch" type="xml">
                 <form string="Data Order DRV Printing">
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirm" states="draft" class="btn btn_success oe_highlight"/>
+                        <button name="action_done" type="object" string="Done" states="confirm" class="btn btn_primary oe_highlight"/>
+                        <button name="action_cancel" type="object" string="Cancel" states="confirm" class="btn btn_danger oe_highlight"/>
+                        <button name="action_draft" type="object" string="Draft" states="cancel" confirm="Kembali melakukan penawaran ?" class="btn btn_info oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    </header>
                     <sheet>
                         <group>
                             <group colspan='4'>
                                 <group colspan='2'>
                                     <field name="user_id" groups="drvprinting.group_drvprinting_managerpenjualan"/>
-                                    <field name="member"/>
-                                    <field name="order_id" attrs="{'invisible':[('member','!=',True)]}"/>
-                                    <field name="name" attrs="{'invisible':[('member','=',True)]}"/>
-                                    <field name="tanggal_pesan"/>
-                                    <field name="is_atk"/>
-                                    <field name="is_banner"/>
-                                    <field name="is_stiker"/>
-                                    <field name="jumlah_pesanan"/>
-                                    <field name="total_tagihan"/>
+                                    <field name="ref"/>
+                                    <field name="member" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="order_id" attrs="{'invisible':[('member','!=',True)], 'required':[('member','=',True)]}"/>
+                                    <field name="name" attrs="{'invisible':[('member','=',True)], 'required':[('member','!=',True)]}"/>
+                                    <field name="tanggal_pesan" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="is_atk" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="is_banner" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="is_stiker" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="jumlah_pesanan" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="total_tagihan" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 </group>
                                 <notebook colspan='4'>
-                                    <page name="Detail Order Stationary" string="Detail Order Stationary" attrs="{'invisible':[('is_atk','!=',True)]}">
+                                    <page name="Detail Order Stationary" string="Detail Order Stationary" attrs="{'invisible':[('is_atk','!=',True)],'readonly':[('state','!=','draft')]}">
                                         <field name="detailorder_ids">
                                             <tree editable='bottom'>
                                                 <field name="banyaknya_atk"/>
@@ -57,7 +71,7 @@
                                             </tree>
                                         </field>
                                     </page>
-                                    <page name="Detail Order Printing Banner" string="Detail Order Printing Banner" attrs="{'invisible':[('is_banner','!=',True)]}">
+                                    <page name="Detail Order Printing Banner" string="Detail Order Printing Banner" attrs="{'invisible':[('is_banner','!=',True)],'readonly':[('state','!=','draft')]}">
                                         <field name="detailorder2_ids">
                                             <tree editable='bottom'>
                                                 <field name="banyaknya_print"/>
@@ -69,7 +83,7 @@
                                             </tree>
                                         </field>
                                     </page>
-                                    <page name="Detail Order Printing Stiker" string="Detail Order Printing Stiker" attrs="{'invisible':[('is_stiker','!=',True)]}">
+                                    <page name="Detail Order Printing Stiker" string="Detail Order Printing Stiker" attrs="{'invisible':[('is_stiker','!=',True)],'readonly':[('state','!=','draft')]}">
                                         <field name="detailorder3_ids">
                                             <tree editable='bottom'>
                                                 <field name="banyaknya_stiker"/>

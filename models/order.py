@@ -1,13 +1,16 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 
 class Order(models.Model):
     _name = 'printing.order'
     _description = 'Daftar Order DRV Printing'
     _rec_name = "order_id"
     
+    ref = fields.Char(string='No. Referensi', required=True,
+                          readonly=True, default=lambda self: _('New'))
+    
     user_id = fields.Many2one('res.users', string='Kasir', readonly=True, default=lambda self: self.env.user)
     
-    member = fields.Boolean(string='Apakah member ?')
+    member = fields.Boolean(string='Apakah member ?', required=True)
     
     order_id = fields.Many2one('res.partner', 
                                string='Nama Member',
@@ -21,7 +24,8 @@ class Order(models.Model):
 
     tanggal_pesan = fields.Datetime(
         string='Tanggal Pesanan',
-        default=fields.Datetime.now)
+        default=fields.Datetime.now, 
+        required=True)
         
     is_atk = fields.Boolean('Stationary')
 
@@ -48,6 +52,26 @@ class Order(models.Model):
         compute='_compute_jumlah_pesanan', 
         string='Jumlah Order')
     
+    state = fields.Selection([
+        ('draft', 'draft'),
+        ('confirm', 'confirm'),
+        ('done', 'done'),
+        ('cancel', 'cancel'),
+    ], string='state',
+    readonly=True, default="draft")
+
+    def action_confirm(self):
+        self.write({'state':'confirm'})
+
+    def action_done(self):
+        self.write({'state':'done'})
+
+    def action_cancel(self):
+        self.write({'state':'cancel'})
+    
+    def action_draft(self):
+        self.write({'state':'draft'})
+    
     @api.depends('detailorder_ids','detailorder2_ids')
     def _compute_jumlah_pesanan(self):
         for record in self:
@@ -71,6 +95,17 @@ class Order(models.Model):
     def _compute_total_tagihan_pivot(self):
         for record in self:
             record.total_tagihan_pivot = record.total_tagihan
+    
+    @api.model
+    def create(self, vals):
+        if vals.get('ref', _("New")) == _("New"):
+            member = vals.get('member', False)
+            if member == True:
+                vals['ref'] = self.env['ir.sequence'].next_by_code('referensi.ordermember') or _("New")
+            else:
+                vals['ref'] = self.env['ir.sequence'].next_by_code('referensi.ordernonmember') or _("New")
+        record = super(Order, self).create(vals)
+        return record
 
 
 class DetailOrderStationary(models.Model):
@@ -105,7 +140,7 @@ class DetailOrderStationary(models.Model):
         for record in self:
             record.jumlah_harga = record.harga_atk * record.banyaknya_atk 
 
-
+    
 
 class DetailOrderPrinting(models.Model):
     _name = 'printing.detailorderprint'

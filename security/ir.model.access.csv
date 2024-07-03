@@ -5,10 +5,10 @@ access_printing_jenisbarang_stationary,access.printing.jenisbarang.stationary,mo
 
 access_printing_jenisprint_print,access.printing.jenisprint.print,model_printing_jenisprint,drvprinting.group_drvprinting_printing,1,0,1,0
 access_printing_jeniscetak_print,access.printing.jeniscetak.print,model_printing_jeniscetak,drvprinting.group_drvprinting_printing,1,0,1,0
-access_printing_employee_printing,access.printing.employee.printing,model_hr_employee,drvprinting.group_drvprinting_printing,1,1,1,0
+access_printing_employee_printing,access.printing.employee.printing,model_hr_employee,drvprinting.group_drvprinting_printing,1,0,1,0
 
 access_printing_jenisprint_managerproduk,access.printing.jenisprint.managerproduk,model_printing_jenisprint,drvprinting.group_drvprinting_managerproduk,1,1,1,1
-access_printing_employee_managerproduk,access.printing.employee.managerproduk,model_hr_employee,drvprinting.group_drvprinting_managerproduk,1,1,1,1
+access_printing_employee_managerproduk,access.printing.employee.managerproduk,model_hr_employee,drvprinting.group_drvprinting_managerproduk,1,0,1,0
 
 access_printing_order_kasir,access.printing.order.kasir,model_printing_order,drvprinting.group_drvprinting_kasir,1,0,1,0
 access_printing_jenisbarang_kasir,access.printing.jenisbarang.kasir,model_printing_jenisbarang,drvprinting.group_drvprinting_kasir,1,1,1,1

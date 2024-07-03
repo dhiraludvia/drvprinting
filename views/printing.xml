@@ -42,7 +42,7 @@
                                 </group>
                                 <group colspan='2'>
                                     <separator string='Harga Printing'/>
-                                        <field name="ukuran"/>
+                                        <field name="ukuran" attrs="{'invisible':[('bahan','=','banner')]}"/>
                                         <field name="harga_print"/>
                                         <field name="kirim_id"/>
                                 </group>

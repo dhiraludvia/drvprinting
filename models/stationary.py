@@ -17,7 +17,9 @@ class stationary(models.Model):
         string='Harga Barang',
         required=True)
 
-    stok = fields.Integer(string='Jumlah Stok')
+    stok = fields.Integer(
+        string='Jumlah Stok',
+        required=True)
 
     satuan = fields.Selection(
         string='Satuan',

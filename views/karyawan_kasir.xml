@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+
+    <!-- pegawai_drvprinting action window -->
+    <record id="karyawan_kasir_drvprinting_action" model="ir.actions.act_window">
+        <field name="name">Karyawan kasir</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('jabatan','=','kasir')]</field>
+        <field name="context">{
+            'search_default_is_pegawainya':1,
+            'default_is_pegawainya':True,
+            }
+            </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="printing_contact_pegawai_kasir_menu_act" 
+        name="Kasir" 
+        parent="printing_contact_pegawai_menu_act" 
+        action="karyawan_kasir_drvprinting_action" 
+        sequence="10"
+        groups="drvprinting.group_drvprinting_karyawan"/>
+
+</odoo>

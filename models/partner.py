@@ -5,6 +5,12 @@ class karyawan(models.Model):
     
     is_pegawainya = fields.Boolean(string='Pegawai', 
                                    default=False)
+    
+    jabatan = fields.Selection(string='Jabatan', 
+                               selection=[('kasir', 'Kasir'), 
+                                          ('printing', 'PIC Printing'),
+                                          ('stationary','PIC Stationary'),],
+                                          required=True)
 
 
 class customer(models.Model):

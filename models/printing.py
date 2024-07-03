@@ -16,10 +16,11 @@ class cetak(models.Model):
         required=True)
     
     ukuran = fields.Char(
-        string='Ukuran Printing',
-        required=True)
+        string='Ukuran Printing')
     
-    stok_bahanprinting = fields.Integer(string='Stok Bahan Printing')
+    stok_bahanprinting = fields.Integer(
+        string='Stok Bahan Printing',
+        required=True)
 
     
     

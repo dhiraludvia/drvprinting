@@ -9,6 +9,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="is_pegawainya"/>
+                <field name="jabatan" />
             </xpath>
         </field>
     </record>
@@ -22,6 +23,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="is_pegawainya"/>
+                <field name="jabatan" />
             </xpath>
         </field>
     </record>
@@ -52,11 +54,19 @@
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="printing_contact_pegawai_menu_act" 
-        name="Karyawan" 
-        parent="printing_datacontact_menu_categ" 
+    <menuitem id="printing_contact_pegawai_all_menu_act" 
+        name="Data Karyawan" 
+        parent="printing_contact_pegawai_menu_act" 
         action="karyawan_drvprinting_action" 
-        sequence="20"
+        sequence="5"
+        groups="drvprinting.group_drvprinting_karyawan"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="printing_contact_pegawai_menu_act" 
+        name="Employee" 
+        parent="printing_datacontact_menu_categ" 
+        action="" 
+        sequence="10"
         groups="drvprinting.group_drvprinting_karyawan"/>
 
 </odoo>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo noupdate="1">
+    <record id="seq_ref_ordermember" model="ir.sequence">
+        <field name="name">Referensi Order Member</field>
+        <field name="code">referensi.ordermember</field>
+        <field name="prefix">DRV-%(range_year)s-%(month)s-</field>
+        <field name="padding">4</field>
+        <field name="suffix">-M</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_ref_ordernonmember" model="ir.sequence">
+        <field name="name">Referensi Order Non Member</field>
+        <field name="code">referensi.ordernonmember</field>
+        <field name="prefix">DRV-%(range_year)s-%(month)s-</field>
+        <field name="padding">4</field>
+        <field name="suffix">-NM</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    
+</odoo>
